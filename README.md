@@ -1,68 +1,27 @@
 # neko-care-game
 
-## Build Setup
+## 開発方法
 
-```bash
-# install dependencies
-$ npm install
+### ライブラリのインストール（初回のみ）
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+利用するライブラリをインストールします。利用するライブラリは全て`package.json`に記載されています。以下のコマンドを実行するだけで、package.json にあるライブラリを全て自動でインストールしてくれます。
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+大抵は最初に一回だけやっといたら再実行は不要です。他の誰かがライブラリを追加したりした場合は、再度インストールする必要があります。
 
-# generate static project
-$ npm run generate
+```
+npm install
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+### 開発サーバーの起動
 
-## Special Directories
+開発に使うサーバーを起動します。ややこしいですが、フロントエンドの開発をやりやすくするための、開発専用サーバーみたいな位置付けです。
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+```
+npm run dev
+```
 
-### `assets`
+実行が完了すると、枠線で囲まれた部分に`Listening: http://localhost:3000/`というメッセージが出ると思います。この URL を Chrome などのブラウザで開くと、画面が表示されます。
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+コードを変更して保存すると、リアルタイムにブラウザに反映されます。もしコードに不備がありエラーが出る場合は、上記のメッセージの下にエラーメッセージが追加されていきます。
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+開発を終了する場合は`ctrl + C`で終了できます。
