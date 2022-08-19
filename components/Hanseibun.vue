@@ -1,7 +1,9 @@
 <template>
   <div class="hanseibun-container">
     <div class="otehon">
-      <img src="/hanseibun.png" />
+      <img
+        src="https://github.com/yukihira-pot/tsukutte-asobu2022/blob/main/static/hanseibun.png?raw=true"
+      />
     </div>
     <textarea v-model="hanseibun" />
     <button @click="submitHanseibun">提出</button>
