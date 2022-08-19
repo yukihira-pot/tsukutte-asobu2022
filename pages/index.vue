@@ -20,6 +20,9 @@
         <button @click="proceedScript">NEXT</button>
         <textarea v-model="hanseibun" />
         <button @click="submitHanseibun">提出</button>
+        <textarea v-model="yourAnswer" />
+        <button @click="GiveQuestion">問題</button>
+        <button @click="SendAnswer">解答</button>
       </div>
     </div>
   </body>
@@ -36,6 +39,7 @@ export default Vue.extend({
       scripts,
       scriptIndex: 0,
       hanseibun: '',
+      yourAnswer: '',
     }
   },
   methods: {
@@ -53,6 +57,18 @@ export default Vue.extend({
         window.alert('不正解')
       }
       this.hanseibun = ''
+    },
+    GiveQuestion() {
+      window.alert('問題出題')
+    },
+    SendAnswer() {
+      const QuestionAnswer = '答え'
+      if (this.yourAnswer === QuestionAnswer) {
+        window.alert('正解!')
+      } else {
+        window.alert('不正解')
+      }
+      this.yourAnswer = ''
     },
   },
 })
