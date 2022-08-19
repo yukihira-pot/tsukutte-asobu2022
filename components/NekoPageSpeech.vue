@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="neko-name">猫</div>
+  <div class="neko-page-speech-container">
+    <div class="neko-name">猫八さん</div>
     <p class="neko-speech">なんやおまえ</p>
   </div>
 </template>
@@ -8,8 +8,14 @@
 <script></script>
 
 <style scoped>
-/* 関係ないやつ (style タグの中が空のときエラーが出てしまうのでなんか書いてます) */
-a {
-  color: red;
+.neko-page-speech-container {
+  position: relative;
+}
+
+.neko-name,
+.neko-speech {
+  font-size: 2vw;
+  font-family: 'Source Sans Pro', 'ヒラギノ角ゴシック Pro',
+    'Hiragino Kaku Gothic Pro', sans-serif;
 }
 </style>

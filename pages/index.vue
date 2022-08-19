@@ -8,7 +8,7 @@
       <div class="neko-speech-container">
         <NekoPageSpeech />
       </div>
-      <div>
+      <!-- <div>
         <div>{{ scripts[scriptIndex] }}</div>
         <button @click="proceedScript">NEXT</button>
         <textarea v-model="hanseibun" />
@@ -16,7 +16,7 @@
         <textarea v-model="yourAnswer" />
         <button @click="GiveQuestion">問題</button>
         <button @click="SendAnswer">解答</button>
-      </div>
+      </div> -->
     </div>
   </body>
 </template>
@@ -79,7 +79,7 @@ export default Vue.extend({
 }
 
 body {
-  width: 90%;
+  width: 85vw;
   margin: 10px auto;
 }
 
@@ -88,13 +88,23 @@ header {
   height: 2em;
 }
 
+#container {
+  background: url('../static/neko_room.png');
+  background-size: cover;
+  padding-bottom: 30px;
+}
+
 .main-container {
   height: max-content;
   margin: 10px auto;
 }
 
 .neko-speech-container {
-  background-color: rgb(200 200 200);
+  position: relative;
+  width: 90%;
+  margin: 10px auto;
+  z-index: 99999;
+  background-color: rgb(240 240 240 / 85%);
   padding: 1em;
   border-radius: 10px;
 }
