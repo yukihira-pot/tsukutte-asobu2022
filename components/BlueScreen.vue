@@ -1,5 +1,5 @@
 <template>
-  <div class="bluescreen">
+  <div class="bluescreen" @click="$emit('change-mode', 'endAngry')">
     <p>
       A problem has been detected and windows has been shut down to prevent
       damage to your computer.<br />
@@ -45,7 +45,7 @@
 <style scoped>
 .bluescreen {
   background-color: darkblue;
-  width: 80vw;
+  width: 100vw;
   height: 100vh;
   color: white;
   font-family: monospace;

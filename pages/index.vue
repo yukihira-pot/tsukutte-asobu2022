@@ -1,5 +1,9 @@
 <template>
   <div id="container">
+    <BlueScreen
+      v-if="mode == 'doAngry' && angryMode == 'bluescreen'"
+      @change-mode="changeMode"
+    />
     <header>ヘッダー</header>
     <Hanseibun
       v-if="mode == 'doAngry' && angryMode == 'hanseibun'"
@@ -38,7 +42,7 @@ import Vue from 'vue'
 import NekoPageMain from '../components/NekoPageMain.vue'
 import NekoPageSpeech from '../components/NekoPageSpeech.vue'
 import Hanseibun from '../components/Hanseibun.vue'
-// import BlueScreen from '@/components/BlueScreen.vue'
+import BlueScreen from '@/components/BlueScreen.vue'
 const scripts = ['hello', 'world', 'goodnight']
 
 export default Vue.extend({
@@ -47,7 +51,7 @@ export default Vue.extend({
     NekoPageMain,
     NekoPageSpeech,
     Hanseibun,
-    // BlueScreen,
+    BlueScreen,
   },
   data() {
     return {
@@ -62,7 +66,7 @@ export default Vue.extend({
   },
   watch: {
     time() {
-      if (this.time === 200) {
+      if (this.time === 10) {
         this.mode = 'startAngry'
       }
     },
