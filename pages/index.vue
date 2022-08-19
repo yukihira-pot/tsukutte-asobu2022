@@ -2,9 +2,9 @@
   <div id="container">
     <header>ヘッダー</header>
     <Hanseibun
-      v-if="angryMode == 'writeHanseibun'"
-      :angry-mode="angryMode"
-      @change-angry-mode="changeAngryMode"
+      v-if="mode == 'doAngry' && angryMode == 'hanseibun'"
+      :mode="mode"
+      @change-mode="changeMode"
     />
     <NekoPageMain :mode="mode" />
     <div v-if="angryMode == ''" class="feed-btn-container">
@@ -57,7 +57,7 @@ export default Vue.extend({
   watch: {
     time() {
       if (this.time === 2) {
-        this.mode = 'angry'
+        this.mode = 'startAngry'
       }
     },
   },

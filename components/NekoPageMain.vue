@@ -17,10 +17,10 @@ export default Vue.extend({
   },
   computed: {
     nekoImage() {
-      if (this.mode === 'angry') {
-        return '/gorogoroneko.png'
+      if (this.mode === 'normal') {
+        return '/neko.png'
       }
-      return '/neko.png'
+      return '/gorogoroneko.png'
     },
   },
 })

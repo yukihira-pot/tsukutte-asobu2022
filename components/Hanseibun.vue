@@ -3,7 +3,7 @@
     <div class="otehon">
       <img src="/hanseibun.png" />
     </div>
-    <textarea v-if="angryMode === 'writeHanseibun'" v-model="hanseibun" />
+    <textarea v-model="hanseibun" />
     <button @click="submitHanseibun">提出</button>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default Vue.extend({
       const answer = 'あいうえお'
       if (this.hanseibun === answer) {
         window.alert('よろしい')
-        this.$emit('change-angry-mode', 'endHanseibun')
+        this.$emit('change-mode', 'endAngry')
       } else {
         window.alert('猫八さん「間違ってる。やり直しや」')
       }
