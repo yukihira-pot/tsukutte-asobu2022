@@ -1,16 +1,25 @@
 <template>
   <div id="container">
     <header>ヘッダー</header>
+    <Hanseibun
+      v-if="angryMode == 'writeHanseibun'"
+      :angry-mode="angryMode"
+      @change-angry-mode="changeAngryMode"
+    />
     <NekoPageMain :mode="mode" />
-    <div class="feed-btn-container">
+    <div v-if="angryMode == ''" class="feed-btn-container">
       <button class="feed-btn">餌やり<br />ボタン</button>
     </div>
-    <NekoPageSpeech />
+    <NekoPageSpeech
+      :mode="mode"
+      :angry-mode="angryMode"
+      @change-angry-mode="changeAngryMode"
+      @change-mode="changeMode"
+    />
   </div>
   <!-- <div>
         <div>{{ scripts[scriptIndex] }}</div>
         <button @click="proceedScript">NEXT</button>
-        <textarea v-model="hanseibun" />
         <button @click="submitHanseibun">提出</button>
         <textarea v-model="yourAnswer" />
         <button @click="GiveQuestion">問題</button>
@@ -22,6 +31,7 @@
 import Vue from 'vue'
 import NekoPageMain from '../components/NekoPageMain.vue'
 import NekoPageSpeech from '../components/NekoPageSpeech.vue'
+import Hanseibun from '../components/Hanseibun.vue'
 // import BlueScreen from '@/components/BlueScreen.vue'
 const scripts = ['hello', 'world', 'goodnight']
 
@@ -30,22 +40,23 @@ export default Vue.extend({
   components: {
     NekoPageMain,
     NekoPageSpeech,
+    Hanseibun,
     // BlueScreen,
   },
   data() {
     return {
       scripts,
       scriptIndex: 0,
-      hanseibun: '',
       yourAnswer: '',
       mode: 'normal',
       time: 0,
       timer: null,
+      angryMode: '',
     }
   },
   watch: {
     time() {
-      if (this.time === 10) {
+      if (this.time === 2) {
         this.mode = 'angry'
       }
     },
@@ -82,6 +93,12 @@ export default Vue.extend({
         window.alert('不正解')
       }
       this.yourAnswer = ''
+    },
+    changeAngryMode(m) {
+      this.angryMode = m
+    },
+    changeMode(m) {
+      this.mode = m
     },
   },
 })
