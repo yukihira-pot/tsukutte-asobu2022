@@ -1,16 +1,31 @@
 <template>
-  <div>
-    <div>
-      <img src="/neko.png" alt="" class="neko-img" />
+  <body>
+    <header>ヘッダー</header>
+    <div id="container">
+      <div class="main-container">
+        <div class="img-container">
+          <img src="/neko.png" alt="" class="neko-img" />
+        </div>
+        <div class="feed-btn-container">
+          <button class="feed-btn">餌やりボタン</button>
+        </div>
+      </div>
+
+      <div class="neko-speech-container">
+        <div class="neko-name">猫</div>
+        <p class="neko-speech">なんやおまえ</p>
+      </div>
+      <div>
+        <div>{{ scripts[scriptIndex] }}</div>
+        <button @click="proceedScript">NEXT</button>
+        <textarea v-model="hanseibun" />
+        <button @click="submitHanseibun">提出</button>
+        <textarea v-model="yourAnswer" />
+        <button @click="GiveQuestion">問題</button>
+        <button @click="SendAnswer">解答</button>
+      </div>
     </div>
-    <div>{{ scripts[scriptIndex] }}</div>
-    <button @click="proceedScript">NEXT</button>
-    <textarea v-model="hanseibun" />
-    <button @click="submitHanseibun">提出</button>
-    <textarea v-model="difficult" />
-    <button @click="GiveQuestion">問題</button>
-    <button @click="SendAnswer">解答</button>
-  </div>
+  </body>
 </template>
 
 <script>
@@ -24,7 +39,7 @@ export default Vue.extend({
       scripts,
       scriptIndex: 0,
       hanseibun: '',
-      yourAnswer: "",
+      yourAnswer: '',
     }
   },
   methods: {
@@ -44,24 +59,71 @@ export default Vue.extend({
       this.hanseibun = ''
     },
     GiveQuestion() {
-      window.alert("問題出題")  
+      window.alert('問題出題')
     },
-    SendAnswer(){
-      const QuestionAnswer = "答え"
-      if (this.yourAnswer === QuestionAnswer){
+    SendAnswer() {
+      const QuestionAnswer = '答え'
+      if (this.yourAnswer === QuestionAnswer) {
         window.alert('正解!')
-      } else{
+      } else {
         window.alert('不正解')
       }
       this.yourAnswer = ''
-    }
+    },
   },
 })
 </script>
 
 <style>
-.neko-img {
-  width: 300px;
-  height: 300px;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 90%;
+  margin: 10px auto;
+}
+
+header {
+  background-color: rgb(191 191 191);
+  height: 2em;
+}
+
+.main-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.img-container {
+  display: inline-block;
+  width: 80%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.img-container .neko-img {
+  width: 70%;
+}
+
+.feed-btn-container {
+  display: inline-block;
+  width: 15%;
+}
+
+.feed-btn-container .feed-btn {
+  width: 5em;
+  height: 5em;
+  border: 0;
+  padding: 1em;
+  border-radius: 50%;
+  background-color: rgb(200 200 200);
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.neko-speech-container {
+  background-color: rgb(200 200 200);
+  padding: 1em;
+  border-radius: 10px;
 }
 </style>
