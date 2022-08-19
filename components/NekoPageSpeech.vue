@@ -1,17 +1,76 @@
 <template>
   <div class="neko-page-speech-container">
-    <div class="hukidashi">
+    <div class="hukidashi" @click="proceedScript">
       <div class="neko-name">猫八さん</div>
-      <p class="neko-speech">なんやおまえ</p>
+      <p class="neko-speech">{{ scripts[scriptIndex] }}</p>
     </div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
+const normalText = ['何やお前', '勝手に触んなや']
+const hanseibunText = [
+  'お前、飯持ってくるのサボったやろ',
+  'あとちょっとで死ぬところやったでほんま',
+  'あー、傷ついた。めっちゃ傷ついたわ。どないしてくれるねん',
+  'ごめんで済んだら警察いらんねん',
+  '謝罪文書いてもらうわ',
+  '１文字でも間違えたら許さへんで',
+]
+const endHanseibunText = ['うわー！こいつほんまに書きよった！おもろ！']
 
 export default Vue.extend({
   name: 'NekoPageSpeech',
+  props: {
+    mode: {
+      type: String,
+      default: 'normal',
+    },
+    angryMode: {
+      type: String,
+      default: '',
+    },
+  },
+  data() {
+    return {
+      scripts: normalText,
+      scriptIndex: 0,
+    }
+  },
+  watch: {
+    mode() {
+      if (this.mode === 'angry') {
+        this.scriptIndex = 0
+        this.scripts = hanseibunText
+      }
+    },
+    angryMode() {
+      if (this.angryMode === 'endHanseibun') {
+        this.scriptIndex = 0
+        this.scripts = endHanseibunText
+      }
+    },
+  },
+  methods: {
+    proceedScript() {
+      this.scriptIndex += 1
+      if (this.scripts.length <= this.scriptIndex) {
+        if (this.mode === 'angry') {
+          if (this.angryMode === 'endHanseibun') {
+            this.$emit('change-mode', 'normal')
+            this.$emit('change-angry-mode', '')
+          } else {
+            this.scriptIndex = this.scripts.length - 1
+            this.$emit('change-angry-mode', 'writeHanseibun')
+          }
+        }
+        if (this.mode === 'normal') {
+          this.scriptIndex = 0
+        }
+      }
+    },
+  },
 })
 </script>
 
@@ -34,9 +93,10 @@ export default Vue.extend({
   width: 90%;
   bottom: 10px;
   margin: 10px auto;
-  z-index: 99999;
+  z-index: 100;
   background-color: rgb(240 240 240 / 85%);
   padding: 1em;
   border-radius: 10px;
+  cursor: pointer;
 }
 </style>
