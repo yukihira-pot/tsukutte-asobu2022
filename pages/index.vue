@@ -25,6 +25,7 @@
 import Vue from 'vue'
 import NekoPageMain from '../components/NekoPageMain.vue'
 import NekoPageSpeech from '../components/NekoPageSpeech.vue'
+// import BlueScreen from '@/components/BlueScreen.vue'
 const scripts = ['hello', 'world', 'goodnight']
 
 export default Vue.extend({
@@ -32,6 +33,7 @@ export default Vue.extend({
   components: {
     NekoPageMain,
     NekoPageSpeech,
+    // BlueScreen,
   },
   data() {
     return {
