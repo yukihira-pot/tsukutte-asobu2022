@@ -1,14 +1,13 @@
 <template>
-  <body>
+  <div id="container">
     <header>ヘッダー</header>
-    <div id="container">
-      <div class="main-container">
-        <NekoPageMain />
-      </div>
-      <div class="neko-speech-container">
-        <NekoPageSpeech />
-      </div>
-      <!-- <div>
+    <NekoPageMain />
+    <div class="feed-btn-container">
+      <button class="feed-btn">餌やり<br />ボタン</button>
+    </div>
+    <NekoPageSpeech />
+  </div>
+  <!-- <div>
         <div>{{ scripts[scriptIndex] }}</div>
         <button @click="proceedScript">NEXT</button>
         <textarea v-model="hanseibun" />
@@ -17,8 +16,6 @@
         <button @click="GiveQuestion">問題</button>
         <button @click="SendAnswer">解答</button>
       </div> -->
-    </div>
-  </body>
 </template>
 
 <script>
@@ -76,38 +73,41 @@ export default Vue.extend({
 </script>
 
 <style>
-* {
-  box-sizing: border-box;
-}
-
-body {
-  width: 85vw;
-  margin: 10px auto;
-}
-
 header {
+  position: fixed;
   background-color: rgb(191 191 191);
   height: 2em;
+  width: 100vw;
 }
 
 #container {
+  position: relative;
   background: url('../static/neko_room.png');
   background-size: cover;
   padding-bottom: 30px;
 }
 
-.main-container {
-  height: max-content;
-  margin: 10px auto;
+.feed-btn-container {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  width: 12vw;
+  height: 12vw;
 }
 
-.neko-speech-container {
+.feed-btn-container .feed-btn {
   position: relative;
-  width: 90%;
-  margin: 10px auto;
-  z-index: 99999;
-  background-color: rgb(240 240 240 / 85%);
-  padding: 1em;
-  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  border: 0.5vw solid rgb(33 33 33);
+  border-radius: 50%;
+  background-color: rgb(252 243 0);
+  font-size: 2vw;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.feed-btn-container .feed-btn:hover {
+  background-color: white;
 }
 </style>
