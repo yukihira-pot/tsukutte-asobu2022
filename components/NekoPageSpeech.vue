@@ -19,6 +19,11 @@ const hanseibunText = [
   '１文字でも間違えたら許さへんで',
 ]
 const endHanseibunText = ['うわー！こいつほんまに書きよった！おもろ！']
+const feedText = ['まっず']
+const endBlueScreenText = [
+  'ビビったやろ',
+  'お前が飯持ってこーへんからブルスクにしてやったわ',
+]
 
 export default Vue.extend({
   name: 'NekoPageSpeech',
@@ -40,15 +45,32 @@ export default Vue.extend({
   },
   watch: {
     mode() {
-      if (this.mode === 'angry') {
-        this.scriptIndex = 0
-        this.scripts = hanseibunText
+      this.scriptIndex = 0
+      if (this.mode === 'startAngry') {
+        switch (Math.floor(Math.random() * 2)) {
+          case 0:
+            this.scripts = hanseibunText
+            this.$emit('change-angry-mode', 'hanseibun')
+            break
+          case 1:
+            this.$emit('change-mode', 'doAngry')
+            this.$emit('change-angry-mode', 'bluescreen')
+            break
+        }
       }
-    },
-    angryMode() {
-      if (this.angryMode === 'endHanseibun') {
-        this.scriptIndex = 0
-        this.scripts = endHanseibunText
+      if (this.mode === 'endAngry') {
+        if (this.angryMode === 'hanseibun') {
+          this.scripts = endHanseibunText
+        }
+        if (this.angryMode === 'bluescreen') {
+          this.scripts = endBlueScreenText
+        }
+      }
+      if (this.mode === 'normal') {
+        this.scripts = normalText
+      }
+      if (this.mode === 'feed') {
+        this.scripts = feedText
       }
     },
   },
@@ -56,14 +78,16 @@ export default Vue.extend({
     proceedScript() {
       this.scriptIndex += 1
       if (this.scripts.length <= this.scriptIndex) {
-        if (this.mode === 'angry') {
-          if (this.angryMode === 'endHanseibun') {
-            this.$emit('change-mode', 'normal')
-            this.$emit('change-angry-mode', '')
-          } else {
-            this.scriptIndex = this.scripts.length - 1
-            this.$emit('change-angry-mode', 'writeHanseibun')
-          }
+        if (this.mode === 'startAngry') {
+          this.scriptIndex = this.scripts.length - 1
+          this.$emit('change-mode', 'doAngry')
+        }
+        if (this.mode === 'endAngry') {
+          this.$emit('change-mode', 'normal')
+          this.$emit('change-angry-mode', '')
+        }
+        if (this.mode === 'feed') {
+          this.$emit('change-mode', 'normal')
         }
         if (this.mode === 'normal') {
           this.scriptIndex = 0

@@ -5,11 +5,7 @@
         src="https://github.com/yukihira-pot/tsukutte-asobu2022/blob/main/static/hanseibun.png?raw=true"
       />
     </div>
-    <textarea
-      v-if="angryMode === 'writeHanseibun'"
-      v-model="hanseibun"
-      class="teishutubun"
-    />
+    <textarea v-model="hanseibun" class="teishutubun" />
     <button class="submit-btn" @click="submitHanseibun">提出</button>
   </div>
 </template>
@@ -35,7 +31,7 @@ export default Vue.extend({
       const answer = 'あいうえお'
       if (this.hanseibun === answer) {
         window.alert('よろしい')
-        this.$emit('change-angry-mode', 'endHanseibun')
+        this.$emit('change-mode', 'endAngry')
       } else {
         window.alert('猫八さん「間違ってる。やり直しや」')
       }
