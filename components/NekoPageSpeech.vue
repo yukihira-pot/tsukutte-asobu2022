@@ -20,6 +20,10 @@ const hanseibunText = [
 ]
 const endHanseibunText = ['うわー！こいつほんまに書きよった！おもろ！']
 const feedText = ['まっず']
+const endBlueScreenText = [
+  'ビビったやろ',
+  'お前が飯持ってこーへんからブルスクにしてやったわ',
+]
 
 export default Vue.extend({
   name: 'NekoPageSpeech',
@@ -43,11 +47,24 @@ export default Vue.extend({
     mode() {
       this.scriptIndex = 0
       if (this.mode === 'startAngry') {
-        this.scripts = hanseibunText
-        this.$emit('change-angry-mode', 'hanseibun')
+        switch (Math.floor(Math.random() * 2)) {
+          case 0:
+            this.scripts = hanseibunText
+            this.$emit('change-angry-mode', 'hanseibun')
+            break
+          case 1:
+            this.$emit('change-mode', 'doAngry')
+            this.$emit('change-angry-mode', 'bluescreen')
+            break
+        }
       }
       if (this.mode === 'endAngry') {
-        this.scripts = endHanseibunText
+        if (this.angryMode === 'hanseibun') {
+          this.scripts = endHanseibunText
+        }
+        if (this.angryMode === 'bluescreen') {
+          this.scripts = endBlueScreenText
+        }
       }
       if (this.mode === 'normal') {
         this.scripts = normalText
