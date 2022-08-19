@@ -17,10 +17,10 @@ export default Vue.extend({
   },
   computed: {
     nekoImage() {
-      if (this.mode === 'normal') {
-        return '/neko.png'
+      if (this.mode === 'angry') {
+        return 'https://github.com/yukihira-pot/tsukutte-asobu2022/blob/main/static/gorogoroneko.png?raw=true'
       }
-      return '/gorogoroneko.png'
+      return 'https://github.com/yukihira-pot/tsukutte-asobu2022/blob/main/static/neko.png?raw=true'
     },
   },
 })
