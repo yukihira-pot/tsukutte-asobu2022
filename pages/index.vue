@@ -17,12 +17,13 @@
           なんやおまえ
         </p>
       </div>
+      <div>
+        <div>{{ scripts[scriptIndex] }}</div>
+        <button @click="proceedScript">NEXT</button>
+        <textarea v-model="hanseibun" />
+        <button @click="submitHanseibun">提出</button>
+      </div>
     </div>
-    <div>{{ scripts[scriptIndex] }}</div>
-    <button @click="proceedScript">NEXT</button>
-    <textarea v-model="hanseibun" />
-    <button @click="submitHanseibun">提出</button>
-  </div>
   </body>
 </template>
 
