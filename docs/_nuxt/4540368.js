@@ -83,7 +83,7 @@
             n('div', { staticClass: 'img-container' }, [
               n('img', {
                 staticClass: 'neko-img',
-                attrs: { src: '/neko.png', alt: '' },
+                attrs: { src: 'https://github.com/yukihira-pot/tsukutte-asobu2022/blob/main/docs/neko.png?raw=true', alt: '' },
               }),
             ]),
             t._v(' '),
