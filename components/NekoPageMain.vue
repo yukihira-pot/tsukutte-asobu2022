@@ -17,7 +17,7 @@ export default Vue.extend({
   },
   computed: {
     nekoImage() {
-      if (this.mode === 'angry') {
+      if (this.mode === 'startAngry') {
         return 'https://github.com/yukihira-pot/tsukutte-asobu2022/blob/main/static/gorogoroneko.png?raw=true'
       }
       return 'https://github.com/yukihira-pot/tsukutte-asobu2022/blob/main/static/neko.png?raw=true'
