@@ -30,10 +30,14 @@
 
 <script>
 import Vue from 'vue'
+// import BlueScreen from '@/components/BlueScreen.vue'
 const scripts = ['hello', 'world', 'goodnight']
 
 export default Vue.extend({
   name: 'IndexPage',
+  components: {
+    // BlueScreen,
+  },
   data() {
     return {
       scripts,
