@@ -19,6 +19,7 @@ const hanseibunText = [
   '１文字でも間違えたら許さへんで',
 ]
 const endHanseibunText = ['うわー！こいつほんまに書きよった！おもろ！']
+const feedText = ['まっず']
 
 export default Vue.extend({
   name: 'NekoPageSpeech',
@@ -51,6 +52,9 @@ export default Vue.extend({
       if (this.mode === 'normal') {
         this.scripts = normalText
       }
+      if (this.mode === 'feed') {
+        this.scripts = feedText
+      }
     },
   },
   methods: {
@@ -64,6 +68,9 @@ export default Vue.extend({
         if (this.mode === 'endAngry') {
           this.$emit('change-mode', 'normal')
           this.$emit('change-angry-mode', '')
+        }
+        if (this.mode === 'feed') {
+          this.$emit('change-mode', 'normal')
         }
         if (this.mode === 'normal') {
           this.scriptIndex = 0
