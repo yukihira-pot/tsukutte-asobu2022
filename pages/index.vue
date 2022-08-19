@@ -1,5 +1,7 @@
 <template>
   <body>
+    <BlueScreen />
+    <!--
     <header>ヘッダー</header>
     <div id="container">
       <div class="main-container">
@@ -25,15 +27,20 @@
         <button @click="SendAnswer">解答</button>
       </div>
     </div>
+    -->
   </body>
 </template>
 
 <script>
 import Vue from 'vue'
+import BlueScreen from '@/components/BlueScreen.vue'
 const scripts = ['hello', 'world', 'goodnight']
 
 export default Vue.extend({
   name: 'IndexPage',
+  components: {
+    BlueScreen,
+  },
   data() {
     return {
       scripts,
