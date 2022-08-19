@@ -83,7 +83,7 @@
             n('div', { staticClass: 'img-container' }, [
               n('img', {
                 staticClass: 'neko-img',
-                attrs: { src: 'img/neko.png', alt: '' },
+                attrs: { src: '/neko.png', alt: '' },
               }),
             ]),
             t._v(' '),
