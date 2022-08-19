@@ -40,14 +40,16 @@ export default Vue.extend({
   },
   watch: {
     mode() {
+      this.scriptIndex = 0
       if (this.mode === 'startAngry') {
-        this.scriptIndex = 0
         this.scripts = hanseibunText
         this.$emit('change-angry-mode', 'hanseibun')
       }
       if (this.mode === 'endAngry') {
-        this.scriptIndex = 0
         this.scripts = endHanseibunText
+      }
+      if (this.mode === 'normal') {
+        this.scripts = normalText
       }
     },
   },

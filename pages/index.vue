@@ -16,6 +16,7 @@
       @change-angry-mode="changeAngryMode"
       @change-mode="changeMode"
     />
+    {{ time }}
   </div>
   <!-- <div>
         <div>{{ scripts[scriptIndex] }}</div>
@@ -99,6 +100,9 @@ export default Vue.extend({
     },
     changeMode(m) {
       this.mode = m
+      if (m === 'normal') {
+        this.time = 0
+      }
     },
   },
 })
