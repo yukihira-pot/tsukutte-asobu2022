@@ -40,13 +40,12 @@ export default Vue.extend({
   },
   watch: {
     mode() {
-      if (this.mode === 'angry') {
+      if (this.mode === 'startAngry') {
         this.scriptIndex = 0
         this.scripts = hanseibunText
+        this.$emit('change-angry-mode', 'hanseibun')
       }
-    },
-    angryMode() {
-      if (this.angryMode === 'endHanseibun') {
+      if (this.mode === 'endAngry') {
         this.scriptIndex = 0
         this.scripts = endHanseibunText
       }
@@ -56,14 +55,13 @@ export default Vue.extend({
     proceedScript() {
       this.scriptIndex += 1
       if (this.scripts.length <= this.scriptIndex) {
-        if (this.mode === 'angry') {
-          if (this.angryMode === 'endHanseibun') {
-            this.$emit('change-mode', 'normal')
-            this.$emit('change-angry-mode', '')
-          } else {
-            this.scriptIndex = this.scripts.length - 1
-            this.$emit('change-angry-mode', 'writeHanseibun')
-          }
+        if (this.mode === 'startAngry') {
+          this.scriptIndex = this.scripts.length - 1
+          this.$emit('change-mode', 'doAngry')
+        }
+        if (this.mode === 'endAngry') {
+          this.$emit('change-mode', 'normal')
+          this.$emit('change-angry-mode', '')
         }
         if (this.mode === 'normal') {
           this.scriptIndex = 0
