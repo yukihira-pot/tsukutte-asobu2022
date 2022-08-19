@@ -13,9 +13,7 @@
 
       <div class="neko-speech-container">
         <div class="neko-name">猫</div>
-        <p class="neko-speech">
-          なんやおまえ
-        </p>
+        <p class="neko-speech">なんやおまえ</p>
       </div>
       <div>
         <div>{{ scripts[scriptIndex] }}</div>
@@ -112,5 +110,4 @@ header {
   padding: 1em;
   border-radius: 10px;
 }
-
 </style>
