@@ -88,3 +88,9 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# vetur の警告消すやつ (https://snyt45.com/ToPEHg96q) 見た
+vetur.config.js
+
+# venv
+.venv
