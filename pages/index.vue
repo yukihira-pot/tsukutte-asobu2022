@@ -8,7 +8,9 @@
     />
     <NekoPageMain :mode="mode" />
     <div v-if="angryMode == ''" class="feed-btn-container">
-      <button class="feed-btn">餌やり<br />ボタン</button>
+      <button class="feed-btn" @click="mode = 'feed'">
+        餌やり<br />ボタン
+      </button>
     </div>
     <NekoPageSpeech
       :mode="mode"
@@ -16,7 +18,10 @@
       @change-angry-mode="changeAngryMode"
       @change-mode="changeMode"
     />
+    <!--後で消す-->
     {{ time }}
+    {{ mode }}
+    {{ angryMode }}
   </div>
   <!-- <div>
         <div>{{ scripts[scriptIndex] }}</div>
@@ -57,7 +62,7 @@ export default Vue.extend({
   },
   watch: {
     time() {
-      if (this.time === 2) {
+      if (this.time === 200) {
         this.mode = 'startAngry'
       }
     },
@@ -68,21 +73,6 @@ export default Vue.extend({
     }, 1000)
   },
   methods: {
-    proceedScript() {
-      this.scriptIndex += 1
-      if (scripts.length <= this.scriptIndex) {
-        window.alert('finish')
-      }
-    },
-    submitHanseibun() {
-      const answer = 'あいうえお'
-      if (this.hanseibun === answer) {
-        window.alert('正解!')
-      } else {
-        window.alert('不正解')
-      }
-      this.hanseibun = ''
-    },
     GiveQuestion() {
       window.alert('問題出題')
     },
