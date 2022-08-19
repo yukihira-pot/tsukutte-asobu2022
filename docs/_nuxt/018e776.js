@@ -49,7 +49,7 @@
         props: { mode: { type: String, default: 'normal' } },
         computed: {
           nekoImage() {
-            return this.mode === 'angry' ? '/gorogoroneko.png' : '/neko.png'
+            return this.mode === 'angry' ? 'https://github.com/yukihira-pot/tsukutte-asobu2022/blob/main/docs/gorogoroneko.png?raw=true' : 'https://github.com/yukihira-pot/tsukutte-asobu2022/blob/main/docs/neko.png?raw=true'
           },
         },
       })
