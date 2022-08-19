@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <header>ヘッダー</header>
-    <NekoPageMain />
+    <NekoPageMain :mode="mode" />
     <div class="feed-btn-container">
       <button class="feed-btn">餌やり<br />ボタン</button>
     </div>
@@ -38,7 +38,22 @@ export default Vue.extend({
       scriptIndex: 0,
       hanseibun: '',
       yourAnswer: '',
+      mode: 'normal',
+      time: 0,
+      timer: null,
     }
+  },
+  watch: {
+    time() {
+      if (this.time === 10) {
+        this.mode = 'angry'
+      }
+    },
+  },
+  mounted() {
+    this.timer = setInterval(() => {
+      this.time++
+    }, 1000)
   },
   methods: {
     proceedScript() {

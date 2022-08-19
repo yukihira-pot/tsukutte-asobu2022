@@ -1,10 +1,30 @@
 <template>
   <div class="img-container">
-    <img src="/neko.png" alt="" class="neko-img" />
+    <img :src="nekoImage" alt="" class="neko-img" />
   </div>
 </template>
 
-<script></script>
+<script>
+import Vue from 'vue'
+
+export default Vue.extend({
+  name: 'NekoPageMain',
+  props: {
+    mode: {
+      type: String,
+      default: 'normal',
+    },
+  },
+  computed: {
+    nekoImage() {
+      if (this.mode === 'angry') {
+        return '/gorogoroneko.png'
+      }
+      return '/neko.png'
+    },
+  },
+})
+</script>
 
 <style scoped>
 .img-container {
