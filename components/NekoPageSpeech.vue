@@ -2,7 +2,12 @@
   <div class="neko-page-speech-container">
     <div class="hukidashi" @click="proceedScript">
       <div class="neko-name">猫八さん</div>
-      <p class="neko-speech">{{ scripts[scriptIndex] }}</p>
+      <div class="speech-box">
+        <p class="neko-speech">
+          {{ scripts[scriptIndex] }}
+        </p>
+        <button class="next-button">NEXT</button>
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +46,7 @@ export default Vue.extend({
     return {
       scripts: normalText,
       scriptIndex: 0,
+      currentScript: '',
     }
   },
   watch: {
@@ -106,21 +112,48 @@ export default Vue.extend({
   display: flex;
 }
 
-.neko-name,
+.neko-name {
+  font-size: 1.4vw;
+  font-weight: 700;
+  color: rgb(79 79 79);
+}
+
 .neko-speech {
   font-size: 2vw;
   font-family: 'Source Sans Pro', 'ヒラギノ角ゴシック Pro',
     'Hiragino Kaku Gothic Pro', sans-serif;
+  font-weight: 700;
+  color: rgb(79 79 79);
 }
 
 .hukidashi {
-  width: 90%;
-  bottom: 10px;
-  margin: 10px auto;
+  position: relative;
+  width: 100%;
+  bottom: 0;
   z-index: 100;
-  background-color: rgb(240 240 240 / 85%);
-  padding: 1em;
-  border-radius: 10px;
+  background: linear-gradient(
+    transparent,
+    rgb(240 240 240 / 85%) 5%,
+    rgb(240 240 240 / 85%) 100%
+  );
+  padding: 4vw;
+  border-radius: 4px;
+  cursor: pointer;
+  transform: translateY(10px);
+  min-height: 4vh;
+}
+
+.speech-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.next-button {
+  background: none;
+  font-size: 1.4vw;
+  font-weight: 700;
+  color: rgb(79 79 79);
+  border: none;
   cursor: pointer;
 }
 </style>
