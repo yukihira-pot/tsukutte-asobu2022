@@ -118,6 +118,19 @@ export default Vue.extend({
       }
     },
   },
+  mounted() {
+    if (this.mode === 'endAngry') {
+      if (this.angryMode === 'hanseibun') {
+        this.scripts = endHanseibunText
+      }
+      if (this.angryMode === 'bluescreen') {
+        this.scripts = endBlueScreenText
+      }
+      if (this.angryMode === 'quiz') {
+        this.scripts = endQuizText
+      }
+    }
+  },
   methods: {
     proceedScript() {
       if (this.mode === 'normal') {
