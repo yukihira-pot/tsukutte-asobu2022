@@ -51,6 +51,7 @@ export default Vue.extend({
   padding: 1rem;
   border: 0.1vw solid black;
   border-radius: 0.8vw;
+  user-select: none;
 }
 
 .answer {
