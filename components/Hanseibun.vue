@@ -34,7 +34,7 @@ export default Vue.extend({
         window.alert('よろしい')
         this.$emit('change-mode', 'endAngry')
       } else {
-        window.alert('猫八さん「間違ってる。やり直しや」')
+        window.alert('間違っとるやないか')
       }
       this.hanseibun = ''
     },

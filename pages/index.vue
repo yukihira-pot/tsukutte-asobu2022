@@ -26,9 +26,9 @@
       @change-mode="changeMode"
     />
     <!--後で消す-->
-    {{ time }}
+    <!-- {{ time }}
     {{ mode }}
-    {{ angryMode }}
+    {{ angryMode }} -->
   </div>
 </template>
 
