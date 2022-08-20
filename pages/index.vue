@@ -9,6 +9,10 @@
       :mode="mode"
       @change-mode="changeMode"
     />
+    <Quiz
+      v-if="mode == 'doAngry' && angryMode == 'quiz'"
+      @change-mode="changeMode"
+    />
     <NekoPageMain :mode="mode" />
     <div v-if="angryMode == ''" class="feed-btn-container">
       <button class="feed-btn" @click="mode = 'feed'">
@@ -26,14 +30,6 @@
     {{ mode }}
     {{ angryMode }}
   </div>
-  <!-- <div>
-        <div>{{ scripts[scriptIndex] }}</div>
-        <button @click="proceedScript">NEXT</button>
-        <button @click="submitHanseibun">提出</button>
-        <textarea v-model="yourAnswer" />
-        <button @click="GiveQuestion">問題</button>
-        <button @click="SendAnswer">解答</button>
-      </div> -->
 </template>
 
 <script>
@@ -42,6 +38,7 @@ import NekoPageMain from '../components/NekoPageMain.vue'
 import NekoPageSpeech from '../components/NekoPageSpeech.vue'
 import Hanseibun from '../components/Hanseibun.vue'
 import BlueScreen from '@/components/BlueScreen.vue'
+import Quiz from '@/components/Quiz'
 const scripts = ['hello', 'world', 'goodnight']
 
 export default Vue.extend({
@@ -51,12 +48,12 @@ export default Vue.extend({
     NekoPageSpeech,
     Hanseibun,
     BlueScreen,
+    Quiz,
   },
   data() {
     return {
       scripts,
       scriptIndex: 0,
-      yourAnswer: '',
       mode: 'normal',
       time: 0,
       timer: null,
@@ -65,7 +62,7 @@ export default Vue.extend({
   },
   watch: {
     time() {
-      if (this.time === 10) {
+      if (this.time === 3) {
         this.mode = 'startAngry'
       }
     },
@@ -76,18 +73,6 @@ export default Vue.extend({
     }, 1000)
   },
   methods: {
-    GiveQuestion() {
-      window.alert('問題出題')
-    },
-    SendAnswer() {
-      const QuestionAnswer = '答え'
-      if (this.yourAnswer === QuestionAnswer) {
-        window.alert('正解!')
-      } else {
-        window.alert('不正解')
-      }
-      this.yourAnswer = ''
-    },
     changeAngryMode(m) {
       this.angryMode = m
     },
