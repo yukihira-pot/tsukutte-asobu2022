@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'neko-care-game',
+    title: '癒しの猫八さん',
     htmlAttrs: {
       lang: 'en',
     },
