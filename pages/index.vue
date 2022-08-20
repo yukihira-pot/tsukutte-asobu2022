@@ -15,7 +15,7 @@
         @change-mode="changeMode"
       />
       <NekoPageMain :mode="mode" />
-      <div v-if="angryMode == ''" class="feed-btn-container">
+      <div v-if="mode == 'normal'" class="feed-btn-container">
         <button class="feed-btn" @click="mode = 'feed'">
           餌やり<br />ボタン
         </button>
