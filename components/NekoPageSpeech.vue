@@ -100,7 +100,8 @@ export default Vue.extend({
         this.scripts = normalText
       }
       if (this.mode === 'feed') {
-        this.scripts = feedText
+        this.scripts = []
+        this.scripts.push(feedText[Math.floor(Math.random() * feedText.length)])
       }
     },
   },
