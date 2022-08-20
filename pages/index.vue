@@ -62,7 +62,7 @@ export default Vue.extend({
   },
   watch: {
     time() {
-      if (this.time === 3) {
+      if (this.time === 300) {
         this.mode = 'startAngry'
       }
     },
