@@ -102,13 +102,6 @@ export default Vue.extend({
 </script>
 
 <style>
-header {
-  position: fixed;
-  background-color: rgb(191 191 191);
-  height: 2em;
-  width: 100vw;
-}
-
 #container {
   position: relative;
   background: url('../static/neko_room.png');
