@@ -4,7 +4,6 @@
       v-if="mode == 'doAngry' && angryMode == 'bluescreen'"
       @change-mode="changeMode"
     />
-    <header>ヘッダー</header>
     <Hanseibun
       v-if="mode == 'doAngry' && angryMode == 'hanseibun'"
       :mode="mode"
