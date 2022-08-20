@@ -45,7 +45,9 @@ export default Vue.extend({
   },
   watch: {
     mode() {
-      this.scriptIndex = 0
+      if (this.mode !== 'doAngry') {
+        this.scriptIndex = 0
+      }
       if (this.mode === 'startAngry') {
         switch (Math.floor(Math.random() * 2)) {
           case 0:
@@ -81,6 +83,9 @@ export default Vue.extend({
         if (this.mode === 'startAngry') {
           this.scriptIndex = this.scripts.length - 1
           this.$emit('change-mode', 'doAngry')
+        }
+        if (this.mode === 'doAngry') {
+          this.scriptIndex = this.scripts.length - 1
         }
         if (this.mode === 'endAngry') {
           this.$emit('change-mode', 'normal')
