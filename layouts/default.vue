@@ -1,7 +1,9 @@
 <template>
   <div>
     <div v-if="!start" class="start-page">
-      <img src="/kawaiineko.png" />
+      <img
+        src="https://github.com/yukihira-pot/tsukutte-asobu2022/blob/main/static/kawaiineko.png?raw=true"
+      />
       <div class="right-side">
         <div class="description">可愛らしい猫で日頃の疲れを癒しませんか？</div>
         <button class="start-button" @click="start = true">はじめる</button>
