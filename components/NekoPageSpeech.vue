@@ -107,7 +107,11 @@ export default Vue.extend({
   },
   methods: {
     proceedScript() {
-      this.scriptIndex += 1
+      if (this.mode === 'normal') {
+        this.scriptIndex = Math.floor(Math.random() * normalText.length)
+      } else {
+        this.scriptIndex += 1
+      }
       if (this.scripts.length <= this.scriptIndex) {
         if (this.mode === 'startAngry') {
           this.scriptIndex = this.scripts.length - 1
@@ -122,9 +126,6 @@ export default Vue.extend({
         }
         if (this.mode === 'feed') {
           this.$emit('change-mode', 'normal')
-        }
-        if (this.mode === 'normal') {
-          this.scriptIndex = 0
         }
       }
     },
