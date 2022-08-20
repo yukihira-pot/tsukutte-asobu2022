@@ -4,27 +4,29 @@
       v-if="mode == 'doAngry' && angryMode == 'bluescreen'"
       @change-mode="changeMode"
     />
-    <Hanseibun
-      v-if="mode == 'doAngry' && angryMode == 'hanseibun'"
-      :mode="mode"
-      @change-mode="changeMode"
-    />
-    <Quiz
-      v-if="mode == 'doAngry' && angryMode == 'quiz'"
-      @change-mode="changeMode"
-    />
-    <NekoPageMain :mode="mode" />
-    <div v-if="angryMode == ''" class="feed-btn-container">
-      <button class="feed-btn" @click="mode = 'feed'">
-        餌やり<br />ボタン
-      </button>
+    <div v-if="mode != 'doAngry' || angryMode != 'bluescreen'">
+      <Hanseibun
+        v-if="mode == 'doAngry' && angryMode == 'hanseibun'"
+        :mode="mode"
+        @change-mode="changeMode"
+      />
+      <Quiz
+        v-if="mode == 'doAngry' && angryMode == 'quiz'"
+        @change-mode="changeMode"
+      />
+      <NekoPageMain :mode="mode" />
+      <div v-if="angryMode == ''" class="feed-btn-container">
+        <button class="feed-btn" @click="mode = 'feed'">
+          餌やり<br />ボタン
+        </button>
+      </div>
+      <NekoPageSpeech
+        :mode="mode"
+        :angry-mode="angryMode"
+        @change-angry-mode="changeAngryMode"
+        @change-mode="changeMode"
+      />
     </div>
-    <NekoPageSpeech
-      :mode="mode"
-      :angry-mode="angryMode"
-      @change-angry-mode="changeAngryMode"
-      @change-mode="changeMode"
-    />
     <!--後で消す-->
     <!-- {{ time }}
     {{ mode }}
