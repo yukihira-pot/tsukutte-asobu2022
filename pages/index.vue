@@ -1,5 +1,8 @@
 <template>
-  <div id="container">
+  <div
+    id="container"
+    :class="{ haikei: mode != 'doAngry' || angryMode != 'bluescreen' }"
+  >
     <BlueScreen
       v-if="mode == 'doAngry' && angryMode == 'bluescreen'"
       @change-mode="changeMode"
@@ -91,6 +94,9 @@ export default Vue.extend({
 <style>
 #container {
   position: relative;
+}
+
+.haikei {
   background: url('../static/neko_room.png');
   background-size: cover;
   padding-bottom: 30px;
