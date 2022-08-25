@@ -48,7 +48,7 @@
   width: 100vw;
   height: 100vh;
   color: white;
-  font-family: monospace;
+  font-family: 'Courier New', Consolas, monospace;
   font-weight: 100;
   font-size: 120%;
 }
